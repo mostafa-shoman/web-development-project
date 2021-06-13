@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Register page</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css-files/register.css">
+  <script src="./js-files/register.js"></script>
+
+</head>
+<body>
+
+  <div class="reg registaration">
+
+    <header>
+      <h3>Register to Car Store</h3>
+    </header>
+    <hr>
+    <form id="registerForm" action="finish.html">
+      <input type="text" name="first-name " placeholder="First Name (Required)" required type="text">
+      <input type="text" name="last-name" placeholder="Last Name (Required)" required type="text">
+      <input type="email" id="email" name="email" placeholder="your mail (Required)" required type="text">
+      <input type="password" id="password" name="password" placeholder="Your password (required)" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" maxlength="8" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+      <input name="address" placeholder="Address" type="text">
+      <input type="tel" id="phone" name="phone" placeholder="Phone number like this (123-45-678)" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+      <label for="gender" style="margin: 10px;">Your Gender</label>
+      <select name="gender" id="gender">
+        <option value="male">male</option>
+        <option value="female">female</option>
+      </select>
+      <textarea name="comments" id="" cols="30" rows="5" placeholder="Your opinion about our cars"></textarea>
+      <input type="submit" name="submit" value="Register me">
+    </form>
+    </div>
+    <script>
+      window.onload=pageLoad;
+      function pageLoad(){
+	    var registerForm = document.getElementById("registerForm");
+      registerForm.onsubmit= validate;
+      }
+      function validate(){
+      var check = true;
+      var mail = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      
+      if (!mail.match(/^[a-zA-z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/)){
+        alert("Email is Not Valid");
+        check=false;
+      }else if (!password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/)){
+        alert("Password is Not Valid, It must contain 8 characters: 1 uppercase, one lowercase, one number and one special character at least");
+        check=false;
+      }
+      return check;
+}
+    </script>
+</body>
+</html>
